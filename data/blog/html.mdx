@@ -1,7 +1,7 @@
 ---
 title: HTML总结
 date: '2022-06-06'
-tags: ['HTML', '前端']
+tags: ['HTML']
 draft: false
 summary: HTML
 images: []
@@ -65,8 +65,6 @@ HTML 中的元素特别多，其中还包括可用于 Web Components 的自定�
 
 ![jd.png](/static/images/html/jd.png)
 
-<div style="text-align:center">从上到下解析HTML元素图</div>
-
 （3）`<head>`元素内容会先被解析，此时浏览器还没开始渲染页面。
 
 > 我们看到`<head>`元素里有用于描述页面元数据的`<meta>`元素，还有一些`<link>`元素涉及外部资源（如图片、CSS 样式等），此时浏览器会去获取这些外部资源。
@@ -88,8 +86,6 @@ HTML 中的元素特别多，其中还包括可用于 Web Components 的自定�
 
 ![baidu.png](/static/images/html/baidu.png)
 
-<div style="text-align:center">百度首页HTML元素图</div>
-
 可以看到，虽然百度首页的`<head>`元素里也包括了一些`<script>`元素，但大多数都加上了`async`属性。`async`属性会让这些脚本并行进行请求获取资源，同时当资源获取完成后尽快解析和执行，这个过程是异步的，不会阻塞 HTML 的解析和渲染。
 
 对于百度这样的搜索引擎来说，必须要在最短的时间内提供到可用的服务给用户，其中就包括搜索框的显示及可交互，除此之外的内容优先级会相对较低。
@@ -110,13 +106,9 @@ HTML 中的元素特别多，其中还包括可用于 Web Components 的自定�
 
 ![DOM.png](/static/images/html/DOM.png)
 
-<div style="text-align:center">控制台元素检查示意图</div>
-
 可以在控制台中获取到该滚动控制面板对应的 DOM 节点，通过右键保存到临时变量后，便可以在 console 面板中通过 DOM 接口获取该节点的信息，或者进行一些修改节点的操作，如下图所示：
 
 ![DOM-console.png](/static/images/html/DOM-console.png)
-
-<div style="text-align:center">控制台DOM对象操作示意图</div>
 
 我们来看看，浏览器中的 HTML 是怎样被解析成 DOM 的。
 
@@ -140,13 +132,9 @@ HTML 中的元素特别多，其中还包括可用于 Web Components 的自定�
 
 ![HTML.png](/static/images/html/HTML.png)
 
-<div style="text-align:center">控制台查看HTML元素图</div>
-
 在浏览器中，上面的 HTML 会被解析成这样的 DOM 树，如下图所示：
 
 ![DOM-tree.png](/static/images/html/DOM-tree.drawio.png)
-
-<div style="text-align:center">DOM树示意图</div>
 
 我们都知道，对于树状结构来说，常常使用`parent`/`child`/`sibling`等方式来描述各个节点之间的关系，对于 DOM 树也不例外。或许对于很多前端开发者来说，“DOM 是树状结构”已经是个过于基础的认识，因此我们也常常忽略掉开发过程中对它的依赖程度。
 
@@ -171,8 +159,6 @@ controlPanel.removeChild(firstChild)
 
 ![DOM-removed.png](/static/images/html/DOM-removed.png)
 
-<div style="text-align:center">DOM节点删除后示意图</div>
-
 随着应用程序越来越复杂，DOM 操作越来越频繁，需要监听事件和在事件回调更新页面的 DOM 操作也越来越多，频繁的 DOM 操作会导致页面频繁地进行计算和渲染，导致不小的性能开销。于是虚拟 DOM 的想法便被人提出，并在许多框架中都有实现。
 
 虚拟 DOM 其实是用来模拟真实 DOM 的中间产物，它的设计大致可分成 3 个过程：
@@ -192,12 +178,8 @@ controlPanel.removeChild(firstChild)
 我们以下页面的展示作为事件委托的内容示例，如下图所示：
 ![event-emitter.png](/static/images/html/event-emitter.png)
 
-<div style="text-align:center">事件委托示意图</div>
-
 我们需要监听滚动控制面板中的几个文本被点击，从而控制元素的展示内容，如下图所示：
 ![event-emitter-DOM.png](/static/images/html/event-emitter-DOM.drawio.png)
-
-<div style="text-align:center">事件委托DOM结构示意图</div>
 
 如果我们在每个元素上都进行监听的话，则需要绑定三个事件。
 
